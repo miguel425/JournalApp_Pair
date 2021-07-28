@@ -4,5 +4,12 @@ class CategoriesController < ApplicationController
     end
 
     def create
+        @category = Category.new(category_params)
+    end
+
+    private
+
+    def category_params
+        params.require(:category).permit(:title)
     end
 end
