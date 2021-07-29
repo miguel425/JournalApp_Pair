@@ -19,7 +19,17 @@ RSpec.describe "CreatingCategories", type: :system do
   end
 
   it 'edits and saves the category' do
-    visit '/categories/:id'
+    visit '/categories/new'
+
+    fill_in 'Title', with: 'Food'
+
+    click_on 'Create Category'
+
+    expect(page).to have_content('Food')
+    
+    category = Category.order('id').last
+
+    visit "/categories/#{category.id}"
 
     expect(page).to have_content('Food')
 
