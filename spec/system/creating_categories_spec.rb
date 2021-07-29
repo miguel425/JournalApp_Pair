@@ -41,7 +41,8 @@ RSpec.describe "CreatingCategories", type: :system do
     click_on 'Update Category'
     expect(page).to have_content('Snacks')
 
-    category = Category.order('id')
+    category = Category.order('id').last
+    
     expect(category.title).to eq('Snacks')
   end
 

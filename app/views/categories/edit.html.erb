@@ -1,0 +1,7 @@
+<%= form_with model: @category, method: :patch do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <%= f.submit 'Update Category' %>
+<% end %>
