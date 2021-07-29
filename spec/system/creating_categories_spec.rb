@@ -35,7 +35,7 @@ RSpec.describe "CreatingCategories", type: :system do
 
     click_on 'Edit Category'
     
-    expect(page).to have_current_path('edit_category_path')
+    expect(page).to have_current_path("/categories/#{category.id}/edit")
 
     fill_in 'Title', with: 'Snacks'
     click_on 'Update Category'
