@@ -21,6 +21,8 @@ RSpec.describe "CreatingCategories", type: :system do
   it 'edits and saves the category' do
     visit '/categories/:id'
 
+    expect(page).to have_content('Food')
+
     click_on 'Edit Category'
 
     fill_in 'Title', with: 'Snacks'
