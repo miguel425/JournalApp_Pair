@@ -3,7 +3,9 @@
     <%= f.label :title %>
     <%= f.text_field :title %>
     <div>
-    hello sample reload this should show up hehe
+    <% @category.errors.full_messages_for(:title).each do |message| %>
+      <div class="form-text form-text-validation"><%= message %></div>
+    <% end %>
     </div>
   </div>
   <%= f.submit 'Create Category' %>

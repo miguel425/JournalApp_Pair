@@ -3,5 +3,8 @@
     <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
+    <% @category.errors.full_messages_for(:title).each do |message| %>
+      <div class="form-text form-text-validation"><%= message %></div>
+    <% end %>
   <%= f.submit 'Update Category' %>
 <% end %>

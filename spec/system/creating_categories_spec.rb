@@ -45,5 +45,4 @@ RSpec.describe "CreatingCategories", type: :system do
     
     expect(category.title).to eq('Snacks')
   end
-
 end
