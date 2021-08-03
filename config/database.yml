@@ -9,12 +9,12 @@ default: &default
 
 development:
   <<: *default
-  database: journalapp_dev
+  database: journalapppair_dev
 
 test:
   <<: *default
-  database: journalapp_test
+  database: journalapppair_test
 
 production:
   <<: *default
-  database: journalapp_prod
+  database: journalapppair_prod
