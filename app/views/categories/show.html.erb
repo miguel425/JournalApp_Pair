@@ -2,3 +2,8 @@
 <%# <button type="button" class="btn btn-primary"></button> %>
 <%= link_to "Edit Category", edit_category_path(@category) %>
 
+<h2>Add a task:</h2>
+<%= render 'tasks/form' %>
+<%= render @category.tasks %>
+
+
