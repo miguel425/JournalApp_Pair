@@ -17,7 +17,7 @@ RSpec.feature "CreateTasks", type: :system do
       expect(page).to have_content('Make lunch!')
       expect(page).to have_content('Prepare a chicken dish for four people.')
 
-      task = @category.task('id').last
+      task = @category.tasks.last
       expect(task.header).to eq('Make lunch!')
       expect(task.description).to eq('Prepare a chicken dish for four people.')
   end
