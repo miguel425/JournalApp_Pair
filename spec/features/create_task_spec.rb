@@ -1,8 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "CreateTasks", type: :system do
+RSpec.feature "CreateTasks", type: :feature do
   before do 
-    driven_by(:rack_test)
     @category = Category.create(title: 'Food')
   end
 
