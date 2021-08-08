@@ -1,10 +1,10 @@
-<%= form_with model: @category, method: :patch do |f| %>
+<%= form_with model: @category, method: :patch do |form| %>
   <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
   </div>
     <% @category.errors.full_messages_for(:title).each do |message| %>
       <div class="form-text form-text-validation"><%= message %></div>
     <% end %>
-  <%= f.submit 'Update Category' %>
+  <%= form.submit 'Update Category' %>
 <% end %>

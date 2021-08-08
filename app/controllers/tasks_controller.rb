@@ -17,6 +17,8 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
+    @category = Category.find(params[:category_id])
+    @task = @category.tasks.find(params[:id])
   end
 
   # POST /tasks or /tasks.json
@@ -29,14 +31,12 @@ class TasksController < ApplicationController
 
   # PATCH/PUT /tasks/1 or /tasks/1.json
   def update
-    respond_to do |format|
-      if @task.update(task_params)
-        format.html { redirect_to @task, notice: "Task was successfully updated." }
-        format.json { render :show, status: :ok, location: @task }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+    @category = Category.find(params[:category_id])
+    @task = @category.tasks.find(params[:id])
+
+    if @task.update(task_params)
+      redirect_to @category
+    else render :edit
     end
   end
 
