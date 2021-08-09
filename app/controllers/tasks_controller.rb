@@ -15,7 +15,8 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
-    @task = Task.new
+    # @task = Task.new
+    @task = current_user.categories.tasks.build
   end
 
   # GET /tasks/1/edit
@@ -26,7 +27,7 @@ class TasksController < ApplicationController
 
   # POST /tasks or /tasks.json
   def create
-    @category = Category.find(params[:category_id])
+    @category = current_user.categories.find(params[:category_id])
     @task = @category.tasks.create(task_params)
     redirect_to category_path(@category)
     
@@ -42,14 +43,14 @@ class TasksController < ApplicationController
 
   # DELETE /tasks/1 or /tasks/1.json
   def destroy
-    @category = Category.find(params[:category_id])
+    @category = current_user.categories.find(params[:category_id])
     @task = @category.tasks.find(params[:id])
     @task.destroy
     redirect_to category_path(@category)
   end
 
   def correct_user
-    @task = current_user.categories.tasks.find_by(id: params[:id])
+    @category = current_user.categories.find(params[:category_id])
     redirect_to categories_path, notice: "Not authorized to perform this action."  if @category.nil?
 end
 
