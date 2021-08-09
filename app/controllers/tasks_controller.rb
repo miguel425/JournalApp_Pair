@@ -31,9 +31,6 @@ class TasksController < ApplicationController
 
   # PATCH/PUT /tasks/1 or /tasks/1.json
   def update
-    @category = Category.find(params[:category_id])
-    @task = @category.tasks.find(params[:id])
-
     if @task.update(task_params)
       redirect_to @category
     else render :edit
@@ -57,6 +54,6 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:header, :description, :category_id)
+      params.require(:task).permit(:header, :description, :category_id, :deadline)
     end
 end

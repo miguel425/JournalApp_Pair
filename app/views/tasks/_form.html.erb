@@ -9,6 +9,11 @@
     <%= form.text_area :description %>
   </div>
 
+  <div class="field">
+      <%= form.label :deadline %>
+      <%= form.datetime_field :deadline, min: Date.today %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
