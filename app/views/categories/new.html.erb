@@ -7,6 +7,7 @@
       <div class="form-text form-text-validation"><%= message %></div>
     <% end %>
     </div>
+    <%= f.number_field :user_id, id: :category_user_id, value: current_user.id, type: :hidden %>
   </div>
   <%= f.submit 'Create Category' %>
 <% end %>

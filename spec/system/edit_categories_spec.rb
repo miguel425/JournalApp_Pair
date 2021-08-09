@@ -1,9 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe "EditCategories", type: :system do
+class CategoriesTests < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+end
+
+RSpec.describe "EditCategories", type: :feature do
   before do
-    driven_by(:rack_test)
-    @category = Category.create(title: 'Food')
+    @user = User.create!(email: 'test@test.com', password: 'test123')
+    sign_in(@user)
+    @category = @user.categories.create!(title: 'Food')
   end
 
   it 'edits and saves the category' do

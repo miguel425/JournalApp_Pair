@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2021_08_09_053441) do
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
