@@ -1,8 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe "CreatingCategories", type: :system do
+class CategoriesTests < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+end
+
+RSpec.describe "CreatingCategories", type: :feature do
   before do
-    driven_by(:rack_test)
+    @user = User.create!(email: 'test@test.com', password: 'test123')
+    sign_in(@user)
   end
 
   it 'saves and displays the category' do

@@ -1,5 +1,8 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
 
   # GET /tasks or /tasks.json
   def index
@@ -47,6 +50,11 @@ class TasksController < ApplicationController
     @task.destroy
     redirect_to category_path(@category)
   end
+
+  def correct_user
+    @task = current_user.categories.tasks.find_by(id: params[:id])
+    redirect_to categories_path, notice: "Not authorized to perform this action."  if @category.nil?
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.
